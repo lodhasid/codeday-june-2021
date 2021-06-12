@@ -50,7 +50,7 @@ function preload() {
 }
 
 function create() {
-    game.physics.startSystem(Phaser.Physics.P2JS);
+    // game.physics.startSystem(Phaser.Physics.P2JS);
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
     asteroids = this.physics.add.staticGroup();
     batteries = this.physics.add.staticGroup();
@@ -65,17 +65,13 @@ function create() {
     objective.setBounce(1)
     objective.setVelocityX(-60)
     objective.setVelocityY(-60)
-<<<<<<< HEAD
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman");
-    game.physics.p2.enable(this.player, false);
-    this.player.body.clearShapes()
-    this.player.body.loadPolygon('leftastrobounds', 'leftastroshape')
+    // game.physics.p2.enable(this.player, false);
+    // this.player.body.clearShapes()
+    // this.player.body.loadPolygon('leftastrobounds', 'leftastroshape')
     this.physics.add.collider(player, asteroids, function () {
       // DEATH FUNC HERE
     });
-=======
-    player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
->>>>>>> dd0ba3163530706fe6d38fa2ff42d5c562dc47a1
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
     this.anims.create({
@@ -108,7 +104,6 @@ function create() {
           }),
       });
     var notdone;
-<<<<<<< HEAD
     var rocks = [];
     var x;
     var y;
@@ -143,14 +138,6 @@ function create() {
 
 
 
-=======
-    for (i = 0; i < 10; i++) {
-      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
-      while (rock.body.onOverlap) {
-          rock.body.destroy()
-          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
-      }
->>>>>>> dd0ba3163530706fe6d38fa2ff42d5c562dc47a1
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
     this.physics.add.collider(asteroids, batteries)
