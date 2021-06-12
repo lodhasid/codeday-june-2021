@@ -122,7 +122,7 @@ function create() {
 }
 
 function sleep() {
-    return null
+    if (energy_remaining > 0) energy_remaining -= 1
 }
 
 function update() {
@@ -157,10 +157,6 @@ function update() {
         }
     }
     document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
-    while (energy_remaining > 0) {
-        console.log(energy_remaining);
-        energy_remaining -= 1
-    }
 
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
