@@ -45,10 +45,12 @@ function preload() {
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
     this.load.image("batteries", "battery.png")
+    this.load.json("leftastrobounds", "leftastro.json")
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
 function create() {
+    game.physics.startSystem(Phaser.Physics.P2JS);
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
     asteroids = this.physics.add.staticGroup();
     batteries = this.physics.add.staticGroup();
@@ -63,7 +65,17 @@ function create() {
     objective.setBounce(1)
     objective.setVelocityX(-60)
     objective.setVelocityY(-60)
+<<<<<<< HEAD
+    player = this.physics.add.sprite(1800, 1080 / 2, "spaceman");
+    game.physics.p2.enable(this.player, false);
+    this.player.body.clearShapes()
+    this.player.body.loadPolygon('leftastrobounds', 'leftastroshape')
+    this.physics.add.collider(player, asteroids, function () {
+      // DEATH FUNC HERE
+    });
+=======
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
+>>>>>>> dd0ba3163530706fe6d38fa2ff42d5c562dc47a1
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
     this.anims.create({
@@ -96,12 +108,49 @@ function create() {
           }),
       });
     var notdone;
+<<<<<<< HEAD
+    var rocks = [];
+    var x;
+    var y;
+    var scale;
+    var size;
+    var ogx = Math.floor(Math.random() * 1818) + 52;
+    var ogy = Math.floor(Math.random() * 978) + 52;
+    spacething = asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
+    rocks.push([ogx, ogy]);
+    spacething.body.setCircle(50*1.3);
+    for (z = 0; z < 9; z++) {
+      x = Math.floor(Math.random() * 1818) + 52;
+      y = Math.floor(Math.random() * 978) + 52;
+      scale = 1 + Math.random()/2;
+      rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
+      rock.body.setCircle(50*scale);
+      rocks.forEach(function(item, i)  {
+        for (forvar = 0; forvar==1; forvar--) {
+          if (item[0]-200<x<item[0]+200 && item[1]-200<y<item[1]+200) {
+            asteroids.remove(rock, true);
+            x = Math.floor(Math.random() * 1818) + 52;
+            y = Math.floor(Math.random() * 978) + 52;
+            console.log(x)
+            rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
+            rock.body.setCircle(50*scale);
+          } else {
+            forvar = 1
+          }
+        }
+        rocks.push([x, y]);
+      });
+
+
+
+=======
     for (i = 0; i < 10; i++) {
       rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
       while (rock.body.onOverlap) {
           rock.body.destroy()
           rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
       }
+>>>>>>> dd0ba3163530706fe6d38fa2ff42d5c562dc47a1
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
     this.physics.add.collider(asteroids, batteries)
