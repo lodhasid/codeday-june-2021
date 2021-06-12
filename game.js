@@ -27,7 +27,10 @@ var game = new Phaser.Game(config);
 function preload() {
     //no images yet. need to get actual imgs
     this.load.image("background", "backgroundfinal.JFIF")
-    this.load.image("spaceman", "spacemanright.png")
+    this.load.spritesheet("spaceman", "spritesheet.png", {
+        frameWidth: 512,
+        frameHeight: 512
+    })
     this.load.image("asteroid1", "/asteroids/Stones_15.png")
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
@@ -59,21 +62,53 @@ function create() {
     player.setCollideWorldBounds(true);
     this.anims.create({
         key: 'left',
+        frames: this.anims.generateFrameNumbers('spaceman', {
+            start: 0,
+            end: 0
+        }),
+
     })
-  }
+    this.anims.create({
+        key: 'leftmoving',
+        frames: this.anims.generateFrameNumbers('spaceman', {
+            start: 1,
+            end: 1
+        }),
+    })
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('spaceman', {
+            start: 2,
+            end: 2
+        }),
+
+    })
+    this.anims.create({
+        key: 'rightmoving',
+        frames: this.anims.generateFrameNumbers('spaceman', {
+            start: 3,
+            end: 3
+        }),
+
+    })
+}
 
 
 function update() {
     if (window.cursors.left.isDown) {
         player.setVelocityX(-150);
+        player.anims.play('leftmoving', true)
     } else if (window.cursors.right.isDown) {
         player.setVelocityX(150);
+        player.anims.play('rightmoving', true)
     } else {
         if (player.body.velocity.x > 0) {
             player.setVelocityX(player.body.velocity.x - 3);
+            player.anims.play('right', true)
         }
         if (player.body.velocity.x < 0) {
             player.setVelocityX(player.body.velocity.x + 3);
+            player.anims.play('left', true)
         }
 
     }
