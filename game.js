@@ -1,6 +1,3 @@
-var energy_remaining = 30;
-
-
 var config = {
     type: Phaser.AUTO,
     width: 1920,
@@ -24,6 +21,9 @@ var config = {
         update: update
     }
 }
+
+var energy_remaining = 6 + 5 * energy_remaining;
+//energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
 var game = new Phaser.Game(config);
 
@@ -134,14 +134,11 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
-    for (i = energy_remaining; i = 0; i--)
+    while (energy_remaining > 0)
     {
-      if (energy_remaining = 0)
-    {
-        break
-      }
       setTimeout(sleep, 1000);
       console.log(energy_remaining);
+      energy_remaining--
     }
 
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
