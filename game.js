@@ -25,6 +25,7 @@ var config = {
 
 var energy_remaining = 11; // + 5 * energy_remaining
 var captured_objective = false
+var death = false;
 setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
@@ -33,6 +34,8 @@ var game = new Phaser.Game(config);
 function preload() {
     //no images yet. need to get actual imgs
     this.load.image("background", "backgroundfinal.JFIF")
+    this.load.image("deathscreen", "deathscreen.png")
+    this.load.image("winscreen", "winscreen.png")
     this.load.spritesheet("spaceman", "spritesheet.png", {
         frameWidth: 512,
         frameHeight: 512
@@ -96,38 +99,12 @@ function create() {
           }),
       });
     var notdone;
-    var rocks = []
-    var x;
-    var y;
-    var scale;
-    var size;
-    var ogx = Math.floor(Math.random() * 1818) + 52
-    var ogy = Math.floor(Math.random() * 978) + 52
-    asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
-    rocks.push([ogx, ogy])
-    for (z = 0; z < 9; z++) {
-      notdone = true
-      x = Math.floor(Math.random() * 1818) + 52;
-      y = Math.floor(Math.random() * 978) + 52;
-      scale = 1 + Math.random()/2;
-      rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
-      rocks.forEach(function(item, i)  {
-        for (forvar = 0; forvar==1; forvar--) {
-          if (item[0]-200<x<item[0]+200 && item[1]-200<y<item[1]+200) {
-            asteroids.remove(rock, true);
-            x = Math.floor(Math.random() * 1818) + 52;
-            y = Math.floor(Math.random() * 978) + 52;
-            console.log(x)
-            rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
-          } else {
-            forvar = 1
-          }
-        }
-        rocks.push([x, y])
-      });
-
-
-
+    for (i = 0; i < 10; i++) {
+      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      while (rock.body.onOverlap) {
+          rock.body.destroy()
+          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      }
     }
     this.physics.add.collider(player, asteroids, function() {
     });
@@ -155,6 +132,11 @@ function objective_dude(player, objective) {
     objective.disableBody(true, true)
 }
 
+function touching_rocks(player, asteroids) {
+  death = true;
+  this.add.image(1920 / 2, 1080 / 2, "deathscreen");
+
+}
 function flashlight_update(e) {
     if (energy_remaining == 0){
       document.documentElement.style.setProperty('--cursorX', 9999 + 'px')
