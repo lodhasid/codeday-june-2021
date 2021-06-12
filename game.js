@@ -36,17 +36,19 @@ function preload() {
 
 function create() {
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
-    asteroids = this.physics.add.staticGroup();
+
     var xpos = [];
     var ypos = [];
     var i;
     var x;
     var y;
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
+    asteroids = this.physics.add.staticGroup();
+    this.physics.add.collider(asteroids, asteroids);
+    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random());
+    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random());
+    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random());
+    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random());
+    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random());
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids);
     player.setScale(0.3);
