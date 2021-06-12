@@ -33,7 +33,7 @@ function preload() {
         frameWidth: 512,
         frameHeight: 512
     })
-    this.load.spritesheet("objective", "onjectivespritesheet.png", {
+    this.load.spritesheet("objective", "objectivespritesheet.png", {
         frameWidth: 64,
         frameHeight: 64
     })
@@ -41,7 +41,6 @@ function preload() {
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
     this.load.image("batteries", "battery.png")
-    this.load.image("objective", "objective.png")
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
@@ -132,7 +131,7 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
-    document.getElementById("energy").write(energy_remaining);
+    document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
     //if
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
