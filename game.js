@@ -31,12 +31,14 @@ function preload() {
     this.load.image("asteroid1", "/asteroids/Stones_15.png")
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
+    this.load.image("batteries", "battery.png")
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
 function create() {
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
     asteroids = this.physics.add.staticGroup();
+    batteries = this.physics.add.staticGroup();
     var xpos = [];
     var ypos = [];
     var i;
@@ -47,6 +49,10 @@ function create() {
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
+    for (i = 0; i < 8; i++){
+      batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
+    }
+
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids);
     player.setScale(0.3);
