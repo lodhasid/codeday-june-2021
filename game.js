@@ -22,7 +22,7 @@ var config = {
     }
 }
 
-var energy_remaining = 6 + 5 * energy_remaining;
+var energy_remaining = 6 /*+ 5 * energy_collected*/;
 setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
