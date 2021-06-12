@@ -40,38 +40,26 @@ function preload() {
 
 function create() {
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
-<<<<<<< HEAD
-
-=======
     asteroids = this.physics.add.staticGroup();
     batteries = this.physics.add.staticGroup();
->>>>>>> ddebd4339f3ddf1821caaa6d5d78db5e25f129e5
     var xpos = [];
     var ypos = [];
     var i;
     var x;
     var y;
-<<<<<<< HEAD
-    asteroids = this.physics.add.staticGroup();
-    this.physics.add.collider(asteroids, asteroids);
-    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random());
-    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random());
-    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random());
-    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random());
-    asteroids.create(Math.floor(Math.random() * 1664) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random());
-=======
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
     for (i = 0; i < 8; i++){
       batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
 
->>>>>>> ddebd4339f3ddf1821caaa6d5d78db5e25f129e5
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
-    this.physics.add.collider(player, asteroids);
+    this.physics.add.collider(player, asteroids, function() {
+
+    });
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
     this.anims.create({
