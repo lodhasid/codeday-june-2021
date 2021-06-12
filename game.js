@@ -100,10 +100,10 @@ function create() {
       });
     var notdone;
     for (i = 0; i < 10; i++) {
-      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
       while (rock.body.onOverlap) {
           rock.body.destroy()
-          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
       }
     }
     this.physics.add.overlap(player, asteroids, touching_rocks.bind(this));
@@ -133,7 +133,7 @@ function objective_dude(player, objective) {
 
 function touching_rocks(player, asteroids) {
   death = true;
-  this.add.image(1920 / 2, 1080 / 2, "deathscreen");
+  //this.add.image(1920 / 2, 1080 / 2, "deathscreen");
 
 }
 function flashlight_update(e) {
