@@ -31,10 +31,15 @@ function preload() {
         frameWidth: 512,
         frameHeight: 512
     })
+    this.load.spritesheet("objective", "onjectivespritesheet.png", {
+        frameWidth: 64,
+        frameHeight: 64
+    })
     this.load.image("asteroid1", "/asteroids/Stones_15.png")
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
     this.load.image("batteries", "battery.png")
+    this.load.image("objective", "objective.png"
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
@@ -55,6 +60,7 @@ function create() {
     for (i = 0; i < 8; i++){
       batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
+
 
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids);
