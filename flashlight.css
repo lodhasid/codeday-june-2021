@@ -3,14 +3,17 @@
     --cursorY: 50vh;
 }
 
-canvas {
-    cursor: none;
+#flashlightHolder {
+    height: 100vh !important;
+    width: calc(100vh * 1.78);
+    margin: auto;
+    text-align: center;
 }
 
-canvas:before {
+#flashlightHolder:before {
     content: 'asdfasdf';
     display: block;
-    width: 100%;
+    width: calc(100vh * 1.78);
     height: 100%;
     position: fixed;
     pointer-events: none;

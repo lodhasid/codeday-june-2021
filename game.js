@@ -19,7 +19,8 @@ var config = {
         preload: preload,
         create: create,
         update: update
-    }
+    },
+    parent: "flashlightHolder"
 }
 
 var energy_remaining = 6; // + 5 * energy_remaining
@@ -55,13 +56,13 @@ function create() {
     var i;
     var x;
     var y;
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
-    for (i = 0; i < 8; i++){
-      batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random() / 2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
+    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
+    for (i = 0; i < 8; i++) {
+        batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
 
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
@@ -69,7 +70,7 @@ function create() {
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
-    this.physics.add.collider(player, asteroids, function() {
+    this.physics.add.collider(player, asteroids, function () {
 
     });
     player.setScale(0.3);
@@ -107,7 +108,7 @@ function create() {
 }
 
 function sleep() {
-  return null
+    return null
 }
 
 function update() {
@@ -142,10 +143,9 @@ function update() {
         }
     }
     document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
-    while (energy_remaining > 0)
-    {
-      console.log(energy_remaining);
-      energy_remaining -= 1
+    while (energy_remaining > 0) {
+        console.log(energy_remaining);
+        energy_remaining -= 1
     }
 
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
