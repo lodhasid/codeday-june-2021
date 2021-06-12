@@ -23,7 +23,8 @@ var config = {
     parent: "flashlightHolder"
 }
 
-var energy_remaining = 6; // + 5 * energy_remaining
+var energy_remaining = 11; // + 5 * energy_remaining
+var captured_objective = false
 setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
@@ -132,6 +133,11 @@ function create() {
     });
     this.physics.add.collider(asteroids, batteries)
     player.setScale(0.3);
+    this.physics.add.overlap(player, batteries, energy, null, this);
+    player.setCollideWorldBounds(true);
+    this.physics.add.collider(asteroids, objective)
+    player.setScale(0.3);
+    this.physics.add.overlap(player, objective, objective_dude, null, this);
     player.setCollideWorldBounds(true);
   }
 
@@ -139,12 +145,32 @@ function sleep() {
     if (energy_remaining > 0) energy_remaining -= 1
 }
 
-function energy() {
-  if (player.isTouching(batteries)) {
-    energy_remaining += 5
-    //batteries.
-  }
+function energy(player, battery) {
+    energy_remaining+=3
+    battery.disableBody(true, true)
 }
+
+function objective_dude(player, objective) {
+    captured_objective = true
+    objective.disableBody(true, true)
+}
+
+function flashlight_update(e) {
+    if (energy_remaining == 0){
+      document.documentElement.style.setProperty('--cursorX', 9999 + 'px')
+      document.documentElement.style.setProperty('--cursorY', 9999 + 'px')
+      return
+    }
+    var x = e.clientX
+    var y = e.clientY
+
+    document.documentElement.style.setProperty('--cursorX', x + 'px')
+    document.documentElement.style.setProperty('--cursorY', y + 'px')
+}
+
+document.addEventListener('mousemove', flashlight_update)
+document.addEventListener('touchmove', flashlight_update)
+
 
 function update() {
     if (window.cursors.left.isDown) {
@@ -177,7 +203,7 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
-    document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
+    document.getElementById("energy").innerHTML = "You have " + energy_remaining + " seconds of energy remaining";
 
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
