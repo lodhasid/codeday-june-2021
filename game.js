@@ -60,8 +60,6 @@ function create() {
     for (i = 0; i < 8; i++){
       batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
-
-
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids);
     player.setScale(0.3);
