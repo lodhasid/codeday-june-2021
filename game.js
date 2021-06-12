@@ -63,10 +63,14 @@ function create() {
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
     for (i = 0; i < 8; i++) {
         batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
-
         objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
         objective.setCollideWorldBounds(true);
         objective.setBounce(1)
+        objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
+        objective.setCollideWorldBounds(true);
+        objective.setBounce(1)
+        objective.setVelocityX(-60)
+        objective.setVelocityY(-60)
 
         asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random() / 2);
         asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
