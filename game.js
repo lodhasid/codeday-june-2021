@@ -23,7 +23,7 @@ var config = {
     parent: "flashlightHolder"
 }
 
-var energy_remaining = 6; // + 5 * energy_remaining
+var energy_remaining = 11; // + 5 * energy_remaining
 setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
@@ -123,7 +123,7 @@ function flashlight_update(e) {
     if (energy_remaining == 0){
       document.documentElement.style.setProperty('--cursorX', 9999 + 'px')
       document.documentElement.style.setProperty('--cursorY', 9999 + 'px')
-      return 
+      return
     }
     var x = e.clientX
     var y = e.clientY
