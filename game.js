@@ -26,7 +26,7 @@ var game = new Phaser.Game(config);
 
 function preload() {
     //no images yet. need to get actual imgs
-    this.load.image("background", "background.png")
+    this.load.image("background", "backgroundfinal.JFIF")
     this.load.image("spaceman", "spacemanright.png")
     this.load.image("asteroid1", "//asteroids/Stones_15.png")
     this.load.image("asteroid2", "//asteroids/Stones2Filled_02.png")
