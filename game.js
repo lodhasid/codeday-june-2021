@@ -66,9 +66,6 @@ function create() {
         objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
         objective.setCollideWorldBounds(true);
         objective.setBounce(1)
-        objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
-        objective.setCollideWorldBounds(true);
-        objective.setBounce(1)
         objective.setVelocityX(-60)
         objective.setVelocityY(-60)
 
