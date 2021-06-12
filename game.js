@@ -137,7 +137,7 @@ function update() {
     for (i = energy_remaining; i = 0; i--)
     {
       if (energy_remaining = 0)
-      {
+    {
         break
       }
       setTimeout(sleep, 1000);
