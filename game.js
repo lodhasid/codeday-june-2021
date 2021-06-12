@@ -51,6 +51,7 @@ function create() {
     var xpos = [];
     var ypos = [];
     var i;
+<<<<<<< HEAD
     var x;
     var y;
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random() / 2);
@@ -97,6 +98,31 @@ function create() {
         frames: this.anims.generateFrameNumbers('spaceman', {
             start: 2,
             end: 2
+=======
+    var notdone;
+    for (i = 0; i < 10; i++) {
+      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      while (rock.body.onOverlap) {
+          rock.body.destroy()
+          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      }
+    }
+    for (i = 0; i < 8; i++){
+      batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
+    }
+
+    player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
+    this.physics.add.collider(player, asteroids, function() {
+    });
+    this.physics.add.collider(asteroids, batteries)
+    player.setScale(0.3);
+    player.setCollideWorldBounds(true);
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('spaceman', {
+            start: 0,
+            end: 0
+>>>>>>> afe1c999eff0f456ed9a299b809545327cdc826a
         }),
 
     })
@@ -109,10 +135,22 @@ function create() {
     })
 
 
+<<<<<<< HEAD
 }
+=======
+        })
+        this.anims.create({
+            key: 'rightmoving',
+            frames: this.anims.generateFrameNumbers('spaceman', {
+                start: 3,
+                end: 3
+            }),
+        })
+  }
+>>>>>>> afe1c999eff0f456ed9a299b809545327cdc826a
 
 function sleep() {
-    return null
+    if (energy_remaining > 0) energy_remaining -= 1
 }
 
 function energy() {
@@ -154,10 +192,6 @@ function update() {
         }
     }
     document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
-    while (energy_remaining > 0) {
-        console.log(energy_remaining);
-        energy_remaining -= 1
-    }
 
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)

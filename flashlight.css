@@ -8,6 +8,7 @@
     width: calc(100vh * 1.78);
     margin: auto;
     text-align: center;
+    cursor: none;
 }
 
 #flashlightHolder:before {
