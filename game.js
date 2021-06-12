@@ -106,6 +106,7 @@ function create() {
     });
     this.physics.add.collider(asteroids, batteries)
     player.setScale(0.3);
+    this.physics.add.overlap(player, batteries, energy, null, this);
     player.setCollideWorldBounds(true);
   }
 
@@ -113,12 +114,27 @@ function sleep() {
     if (energy_remaining > 0) energy_remaining -= 1
 }
 
-function energy() {
-  if (player.isTouching(batteries)) {
-    energy_remaining += 5
-    //batteries.
-  }
+function energy(player, battery) {
+    energy_remaining+=3
+    battery.disableBody(true, true)
 }
+
+function flashlight_update(e) {
+    if (energy_remaining == 0){
+      document.documentElement.style.setProperty('--cursorX', 9999 + 'px')
+      document.documentElement.style.setProperty('--cursorY', 9999 + 'px')
+      return 
+    }
+    var x = e.clientX
+    var y = e.clientY
+
+    document.documentElement.style.setProperty('--cursorX', x + 'px')
+    document.documentElement.style.setProperty('--cursorY', y + 'px')
+}
+
+document.addEventListener('mousemove', flashlight_update)
+document.addEventListener('touchmove', flashlight_update)
+
 
 function update() {
     if (window.cursors.left.isDown) {
