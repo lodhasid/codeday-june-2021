@@ -25,6 +25,7 @@ var config = {
 
 var energy_remaining = 11; // + 5 * energy_remaining
 var captured_objective = false
+var death = false;
 setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
@@ -33,6 +34,8 @@ var game = new Phaser.Game(config);
 function preload() {
     //no images yet. need to get actual imgs
     this.load.image("background", "backgroundfinal.JFIF")
+    this.load.image("deathscreen", "deathscreen.png")
+    this.load.image("winscreen", "winscreen.png")
     this.load.spritesheet("spaceman", "spritesheet.png", {
         frameWidth: 512,
         frameHeight: 512
@@ -62,6 +65,7 @@ function create() {
     objective.setBounce(1)
     objective.setVelocityX(-60)
     objective.setVelocityY(-60)
+<<<<<<< HEAD
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman");
     game.physics.p2.enable(this.player, false);
     this.player.body.clearShapes()
@@ -69,6 +73,9 @@ function create() {
     this.physics.add.collider(player, asteroids, function () {
       // DEATH FUNC HERE
     });
+=======
+    player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
+>>>>>>> dd0ba3163530706fe6d38fa2ff42d5c562dc47a1
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
     this.anims.create({
@@ -101,6 +108,7 @@ function create() {
           }),
       });
     var notdone;
+<<<<<<< HEAD
     var rocks = [];
     var x;
     var y;
@@ -135,9 +143,16 @@ function create() {
 
 
 
+=======
+    for (i = 0; i < 10; i++) {
+      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      while (rock.body.onOverlap) {
+          rock.body.destroy()
+          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 800) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      }
+>>>>>>> dd0ba3163530706fe6d38fa2ff42d5c562dc47a1
     }
-    this.physics.add.collider(player, asteroids, function() {
-    });
+    this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
     this.physics.add.collider(asteroids, batteries)
     player.setScale(0.3);
     this.physics.add.overlap(player, batteries, energy, null, this);
@@ -162,6 +177,11 @@ function objective_dude(player, objective) {
     objective.disableBody(true, true)
 }
 
+function touching_rocks(player, asteroids) {
+  death = true;
+  this.add.image(1920 / 2, 1080 / 2, "deathscreen");
+
+}
 function flashlight_update(e) {
     if (energy_remaining == 0){
       document.documentElement.style.setProperty('--cursorX', 9999 + 'px')
