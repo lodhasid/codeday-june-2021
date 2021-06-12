@@ -16,7 +16,7 @@ function preload() {
     //no images yet. need to get actual imgs
     this.load.image("background", "background.png")
     this.load.image("spaceman", "spaceman.png")
-    this.load.image("astroid", "astroid.png")
+    this.load.image("asteroid", "asteroid.png")
 }
 
 function create() {}
