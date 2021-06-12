@@ -106,8 +106,7 @@ function create() {
           rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
       }
     }
-    this.physics.add.collider(player, asteroids, function() {
-    });
+    this.physics.add.overlap(player, asteroids, touching_rocks.bind(this));
     this.physics.add.collider(asteroids, batteries)
     player.setScale(0.3);
     this.physics.add.overlap(player, batteries, energy, null, this);
