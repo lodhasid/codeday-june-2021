@@ -3,7 +3,7 @@ var config = {
     width: 1920,
     height: 1080,
     scale: {
-        mode: Phaser.Scale.FILL,
+        mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     physics: {
@@ -27,7 +27,7 @@ var game = new Phaser.Game(config);
 function preload() {
     //no images yet. need to get actual imgs
     this.load.image("background", "background.png")
-    this.load.image("spaceman", "spaceman.png")
+    this.load.image("spaceman", "spacemanright.png")
     this.load.image("asteroid", "asteroid.png")
     window.cursors = this.input.keyboard.createCursorKeys();
 }
@@ -35,6 +35,8 @@ function preload() {
 function create() {
     this.add.image(1920 / 2, 1080 / 2, "background") //load background centered
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman") //load astronot 
+    player.setScale(0.3)
+    player.setCollideWorldBounds(true);
 }
 
 function update() {
@@ -42,9 +44,25 @@ function update() {
         player.setVelocityX(-150)
     } else if (window.cursors.right.isDown) {
         player.setVelocityX(150)
+    } else {
+        if (player.body.velocity.x > 0) {
+            player.setVelocityX(player.body.velocity.x - 3)
+        }
+        if (player.body.velocity.x < 0) {
+            player.setVelocityX(player.body.velocity.x + 3)
+        }
+
     }
     if (window.cursors.up.isDown) {
         player.setVelocityY(-150)
     } else if (window.cursors.down.isDown) {
         player.setVelocityY(150)
+    } else {
+        if (player.body.velocity.y > 0) {
+            player.setVelocityY(player.body.velocity.y - 3)
+        }
+        if (player.body.velocity.y < 0) {
+            player.setVelocityY(player.body.velocity.y + 3)
+        }
     }
+}
