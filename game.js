@@ -167,7 +167,7 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
-    document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
+    document.getElementById("energy").innerHTML = "You have " + energy_remaining + " seconds of energy remaining";
 
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
