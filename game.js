@@ -35,7 +35,7 @@ function preload() {
         frameWidth: 512,
         frameHeight: 512
     })
-    this.load.spritesheet("objective", "onjectivespritesheet.png", {
+    this.load.spritesheet("objective", "objectivespritesheet.png", {
         frameWidth: 64,
         frameHeight: 64
     })
@@ -43,7 +43,6 @@ function preload() {
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
     this.load.image("batteries", "battery.png")
-    this.load.image("objective", "objective.png")
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
@@ -69,10 +68,6 @@ function create() {
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    for (i = 0; i < 8; i++) {
-        batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
-    }
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids, function() {
 
@@ -146,6 +141,7 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
+    document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
     while (energy_remaining > 0)
     {
       console.log(energy_remaining);
