@@ -23,6 +23,10 @@ var config = {
         update: update
     }
 }
+
+var energy_remaining = 6 + 5 * energy_remaining;
+setInterval(sleep, 1000);
+//energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
 var game = new Phaser.Game(config);
 
@@ -132,6 +136,11 @@ function update() {
         }
     }
     document.getElementById("energy").innerHTML = "You have " + energy_remaining + " energy_remaining";
+    while (energy_remaining > 0)
+    {
+      console.log(energy_remaining);
+      energy_remaining--
+    }
     //if
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
