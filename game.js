@@ -39,7 +39,7 @@ function preload() {
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
     this.load.image("batteries", "battery.png")
-    this.load.image("objective", "objective.png"
+    this.load.image("objective", "objective.png")
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
