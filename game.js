@@ -63,48 +63,61 @@ function create() {
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
     for (i = 0; i < 8; i++) {
         batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
+
+        objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
+        objective.setCollideWorldBounds(true);
+        objective.setBounce(1)
+
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random() / 2);
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
+        for (i = 0; i < 8; i++) {
+            batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
+        }
+
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
+        asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
+        player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
+        this.physics.add.collider(player, asteroids, function () {
+
+        });
+        player.setScale(0.3);
+        player.setCollideWorldBounds(true);
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('spaceman', {
+                start: 0,
+                end: 0
+            }),
+
+        })
+        this.anims.create({
+            key: 'leftmoving',
+            frames: this.anims.generateFrameNumbers('spaceman', {
+                start: 1,
+                end: 1
+            }),
+        })
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('spaceman', {
+                start: 2,
+                end: 2
+            }),
+
+        })
+        this.anims.create({
+            key: 'rightmoving',
+            frames: this.anims.generateFrameNumbers('spaceman', {
+                start: 3,
+                end: 3
+            }),
+        })
     }
-
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
-    this.physics.add.collider(player, asteroids, function () {
-
-    });
-    player.setScale(0.3);
-    player.setCollideWorldBounds(true);
-    this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('spaceman', {
-            start: 0,
-            end: 0
-        }),
-
-    })
-    this.anims.create({
-        key: 'leftmoving',
-        frames: this.anims.generateFrameNumbers('spaceman', {
-            start: 1,
-            end: 1
-        }),
-    })
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('spaceman', {
-            start: 2,
-            end: 2
-        }),
-
-    })
-    this.anims.create({
-        key: 'rightmoving',
-        frames: this.anims.generateFrameNumbers('spaceman', {
-            start: 3,
-            end: 3
-        }),
-    })
 }
 
 function sleep() {
