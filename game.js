@@ -129,7 +129,6 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
-    if
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
 }
