@@ -51,30 +51,17 @@ function create() {
     var xpos = [];
     var ypos = [];
     var i;
-<<<<<<< HEAD
-    var x;
-    var y;
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random() / 2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random() / 2);
-
     for (i = 0; i < 8; i++) {
         batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
-        objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
-        objective.setCollideWorldBounds(true);
-        objective.setBounce(1)
-        objective.setVelocityX(-60)
-        objective.setVelocityY(-60)
     }
+    objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
+    objective.setCollideWorldBounds(true);
+    objective.setBounce(1)
+    objective.setVelocityX(-60)
+    objective.setVelocityY(-60)
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids, function () {
-
+      // DEATH FUNC HERE
     });
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
@@ -85,20 +72,28 @@ function create() {
             end: 0
         }),
 
-    })
+    });
     this.anims.create({
         key: 'leftmoving',
         frames: this.anims.generateFrameNumbers('spaceman', {
             start: 1,
             end: 1
         }),
-    })
+    });
     this.anims.create({
         key: 'right',
         frames: this.anims.generateFrameNumbers('spaceman', {
             start: 2,
             end: 2
-=======
+        }),
+      });
+      this.anims.create({
+          key: 'rightmoving',
+          frames: this.anims.generateFrameNumbers('spaceman', {
+              start: 3,
+              end: 3
+          }),
+      });
     var notdone;
     for (i = 0; i < 10; i++) {
       rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
@@ -107,47 +102,12 @@ function create() {
           rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
       }
     }
-    for (i = 0; i < 8; i++){
-      batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
-    }
-
-    player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids, function() {
     });
     this.physics.add.collider(asteroids, batteries)
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
-    this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('spaceman', {
-            start: 0,
-            end: 0
->>>>>>> afe1c999eff0f456ed9a299b809545327cdc826a
-        }),
-
-    })
-    this.anims.create({
-        key: 'rightmoving',
-        frames: this.anims.generateFrameNumbers('spaceman', {
-            start: 3,
-            end: 3
-        }),
-    })
-
-
-<<<<<<< HEAD
-}
-=======
-        })
-        this.anims.create({
-            key: 'rightmoving',
-            frames: this.anims.generateFrameNumbers('spaceman', {
-                start: 3,
-                end: 3
-            }),
-        })
   }
->>>>>>> afe1c999eff0f456ed9a299b809545327cdc826a
 
 function sleep() {
     if (energy_remaining > 0) energy_remaining -= 1
@@ -156,7 +116,7 @@ function sleep() {
 function energy() {
   if (player.isTouching(batteries)) {
     energy_remaining += 5
-    batteries.
+    //batteries.
   }
 }
 
