@@ -96,12 +96,38 @@ function create() {
           }),
       });
     var notdone;
-    for (i = 0; i < 10; i++) {
-      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
-      while (rock.body.onOverlap) {
-          rock.body.destroy()
-          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
-      }
+    var rocks = []
+    var x;
+    var y;
+    var scale;
+    var size;
+    var ogx = Math.floor(Math.random() * 1818) + 52
+    var ogy = Math.floor(Math.random() * 978) + 52
+    asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
+    rocks.push([ogx, ogy])
+    for (z = 0; z < 9; z++) {
+      notdone = true
+      x = Math.floor(Math.random() * 1818) + 52;
+      y = Math.floor(Math.random() * 978) + 52;
+      scale = 1 + Math.random()/2;
+      rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
+      rocks.forEach(function(item, i)  {
+        for (forvar = 0; forvar==1; forvar--) {
+          if (item[0]-200<x<item[0]+200 && item[1]-200<y<item[1]+200) {
+            asteroids.remove(rock, true);
+            x = Math.floor(Math.random() * 1818) + 52;
+            y = Math.floor(Math.random() * 978) + 52;
+            console.log(x)
+            rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
+          } else {
+            forvar = 1
+          }
+        }
+        rocks.push([x, y])
+      });
+
+
+
     }
     this.physics.add.collider(player, asteroids, function() {
     });
