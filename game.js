@@ -1,3 +1,5 @@
+var energy_remaining;
+
 var config = {
     type: Phaser.AUTO,
     width: 1920,
@@ -21,9 +23,6 @@ var config = {
         update: update
     }
 }
-
-var energy_remaining = 6 + 5 * energy_remaining;
-//energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
 var game = new Phaser.Game(config);
 
@@ -55,7 +54,6 @@ function create() {
     var i;
     var x;
     var y;
-<<<<<<< HEAD
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2);
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
@@ -65,16 +63,6 @@ function create() {
       batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
 
-=======
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    for (i = 0; i < 8; i++) {
-        batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
-    }
->>>>>>> 47c5306140f8cdc93e6619f54d7318b9d8e47dd9
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids, function() {
 
@@ -113,9 +101,6 @@ function create() {
     })
 }
 
-function sleep() {
-  return null
-}
 
 function update() {
     if (window.cursors.left.isDown) {
@@ -134,7 +119,6 @@ function update() {
             player.anims.play('left', true)
         }
 
-
     }
     if (window.cursors.up.isDown) {
         player.setVelocityY(-150);
@@ -148,13 +132,8 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
-    while (energy_remaining > 0)
-    {
-      setTimeout(sleep, 1000);
-      console.log(energy_remaining);
-      energy_remaining--
-    }
-
+    document.getElementById("energy").write(energy_remaining);
+    //if
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
 }
