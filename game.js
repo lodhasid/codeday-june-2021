@@ -23,6 +23,7 @@ var config = {
 }
 
 var energy_remaining = 6 + 5 * energy_remaining;
+setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
 var game = new Phaser.Game(config);
@@ -150,7 +151,6 @@ function update() {
     }
     while (energy_remaining > 0)
     {
-      setTimeout(sleep, 1000);
       console.log(energy_remaining);
       energy_remaining--
     }
