@@ -1,25 +1,40 @@
 :root {
     --cursorX: 50vw;
     --cursorY: 50vh;
+    --astroX: 50vw;
+    --astroY: 50vh;
+    overflow: hidden;
 }
 
-#flashlightHolder {
-    height: 100vh !important;
+
+#flashlightHolderInside {
+    mix-blend-mode: hard-light;
+    position: absolute;
+    top: 0;
+    margin-left: calc(calc(100vw - calc(100vh * 1.78)) / 2);
     width: calc(100vh * 1.78);
-    margin: auto;
-    text-align: center;
-    cursor: none;
+    height: 100vh;
+    background-color: black;
 }
 
-#flashlightHolder:before {
-    content: 'asdfasdf';
-    display: block;
-    width: calc(100vh * 1.78);
-    height: 100%;
-    position: fixed;
-    pointer-events: none;
-    background: radial-gradient(circle 10vmax at var(--cursorX) var(--cursorY),
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, .5) 80%,
-            rgba(0, 0, 0, 1) 100%)
+.flashlight {
+    border-radius: 50%;
+    filter: blur(40px);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(var(--cursorY) - 100px);
+    left: calc(var(--cursorX) - 200px);
+    background-color: gray;
+}
+
+.flashlight {
+    border-radius: 50%;
+    filter: blur(40px);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(var(--cursorY) - 100px);
+    left: calc(var(--cursorX) - 200px);
+    background-color: gray;
 }
