@@ -38,6 +38,10 @@ function create() {
     this.add.image(1920 / 2, 1080 / 2, "background") //load background centered
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman") //load astronot
     player.setScale(0.3)
+    player.setCollideWorldBounds(true);
+    this.anims.create({
+        key: 'left',
+    })
     asteroids = this.physics.add.staticGroup()
     //    asteroids.create(x, y, 'asteroid1')
     //    asteroids.create(x, y, 'asteroid2')
