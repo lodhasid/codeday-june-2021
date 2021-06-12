@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     scene: {
         preload: preload,
         create: create,
@@ -19,6 +19,10 @@ function preload() {
     this.load.image("asteroid", "asteroid.png")
 }
 
-function create() {}
+function create() {
+    this.add.image(1920 / 2, 1080 / 2, "background") //load background centered
+}
 
-function update() {}
+function update() {
+
+}
