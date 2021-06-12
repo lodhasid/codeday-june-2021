@@ -1,4 +1,5 @@
-var energy_remaining;
+var energy_remaining = 30;
+
 
 var config = {
     type: Phaser.AUTO,
@@ -98,6 +99,9 @@ function create() {
     })
 }
 
+function sleep() {
+  return null
+}
 
 function update() {
     if (window.cursors.left.isDown) {
@@ -116,6 +120,7 @@ function update() {
             player.anims.play('left', true)
         }
 
+
     }
     if (window.cursors.up.isDown) {
         player.setVelocityY(-150);
@@ -129,6 +134,16 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
+    for (i = energy_remaining; i = 0; i--)
+    {
+      if (energy_remaining = 0)
+      {
+        break
+      }
+      setTimeout(sleep, 1000);
+      console.log(energy_remaining);
+    }
+
     //Change flashlight value using window.<varname> = whatever, by whatever amount works.
     //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
 }
