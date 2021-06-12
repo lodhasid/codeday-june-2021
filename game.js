@@ -24,6 +24,7 @@ var config = {
 }
 
 var energy_remaining = 11; // + 5 * energy_remaining
+var captured_objective = false
 setInterval(sleep, 1000);
 //energy_remaining won't be hardset and will change
 //define variable for "flashlightPower" or whatever
@@ -108,6 +109,10 @@ function create() {
     player.setScale(0.3);
     this.physics.add.overlap(player, batteries, energy, null, this);
     player.setCollideWorldBounds(true);
+    this.physics.add.collider(asteroids, objective)
+    player.setScale(0.3);
+    this.physics.add.overlap(player, objective, objective_dude, null, this);
+    player.setCollideWorldBounds(true);
   }
 
 function sleep() {
@@ -117,6 +122,11 @@ function sleep() {
 function energy(player, battery) {
     energy_remaining+=3
     battery.disableBody(true, true)
+}
+
+function objective_dude(player, objective) {
+    captured_objective = true
+    objective.disableBody(true, true)
 }
 
 function flashlight_update(e) {
