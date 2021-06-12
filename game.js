@@ -43,6 +43,7 @@ function create() {
     asteroids.create(x, y, 'asteroid3')
     asteroids.create(x, y, 'asteroid2')
     asteroids.create(x, y, 'asteroid3')
+    console.log("testing")
 }
 
 function update() {
