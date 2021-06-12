@@ -53,25 +53,22 @@ function create() {
     var xpos = [];
     var ypos = [];
     var i;
-    var x;
-    var y;
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2').setScale(1.5 + Math.random()/2);
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3').setScale(1.5 + Math.random()/2);
+    var notdone;
+    for (i = 0; i < 10; i++) {
+      rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      while (rock.body.onOverlap) {
+          rock.body.destroy()
+          rock = asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1').setScale(1.5 + Math.random()/2).refreshBody();
+      }
+    }
     for (i = 0; i < 8; i++){
       batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
 
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid1');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids, function() {
-
     });
+    this.physics.add.collider(asteroids, batteries)
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
     this.anims.create({
