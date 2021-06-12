@@ -26,24 +26,15 @@ var game = new Phaser.Game(config);
 
 function preload() {
     //no images yet. need to get actual imgs
-<<<<<<< HEAD
-    this.load.image("background", "background.png");
-    this.load.image("spaceman", "spaceman.png");
-    this.load.image("asteroid1", "//asteroids/Stones_15.png");
-    this.load.image("asteroid2", "//asteroids/Stones2Filled_02.png");
-    this.load.image("asteroid3", "//asteroids/Stones2Filled_17.png");
-=======
     this.load.image("background", "backgroundfinal.JFIF")
     this.load.image("spaceman", "spacemanright.png")
     this.load.image("asteroid1", "//asteroids/Stones_15.png")
     this.load.image("asteroid2", "//asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "//asteroids/Stones2Filled_17.png")
->>>>>>> 2bd34924aeaf1ba05eaf59ca7732ca9699ab9a23
     window.cursors = this.input.keyboard.createCursorKeys();
 }
 
 function create() {
-<<<<<<< HEAD
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     asteroids = this.physics.add.staticGroup();
@@ -78,9 +69,6 @@ function create() {
     asteroids.create(xpos[2], ypos[2], 'asteroid3');
     asteroids.create(xpos[3], ypos[3], 'asteroid2');
     asteroids.create(xpos[4], ypos[4], 'asteroid3');
-=======
-    this.add.image(1920 / 2, 1080 / 2, "background") //load background centered
->>>>>>> 2bd34924aeaf1ba05eaf59ca7732ca9699ab9a23
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman") //load astronot
     player.setScale(0.3)
     player.setCollideWorldBounds(true);
