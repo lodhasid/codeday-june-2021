@@ -21,7 +21,7 @@ var config = {
         update: update
     }
 }
-
+//define variable for "flashlightPower" or whatever
 var game = new Phaser.Game(config);
 
 function preload() {
@@ -57,8 +57,8 @@ function create() {
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid2');
     asteroids.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'asteroid3');
-    for (i = 0; i < 8; i++){
-      batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
+    for (i = 0; i < 8; i++) {
+        batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
     }
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman"); //load astronot
     this.physics.add.collider(player, asteroids);
@@ -93,7 +93,6 @@ function create() {
             start: 3,
             end: 3
         }),
-
     })
 }
 
@@ -128,4 +127,6 @@ function update() {
             player.setVelocityY(player.body.velocity.y + 3);
         }
     }
+    //Change flashlight value using window.<varname> = whatever, by whatever amount works.
+    //If flalight value <= 0 then remove flashlight (once i actually ake the flash.ight.)
 }
