@@ -101,17 +101,17 @@ function create() {
     var y;
     var scale;
     var size;
-    var ogx = Math.floor(Math.random() * 1818) + 52;
+    var ogx = Math.floor(Math.random() * 1600) + 52;
     var ogy = Math.floor(Math.random() * 978) + 52;
     spacething = asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
     rocks.push([ogx, ogy]);
-    spacething.body.setCircle(50 * 1.3);
+    spacething.body.setCircle(40 * 1.3);
     for (z = 0; z < 6; z++) {
-        x = Math.floor(Math.random() * 1818) + 52;
+        x = Math.floor(Math.random() * 1600) + 52;
         y = Math.floor(Math.random() * 978) + 52;
         scale = 1 + Math.random() / 2;
         rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
-        rock.body.setCircle(50 * scale);
+        rock.body.setCircle(40 * scale);
         rocks.forEach(function (item, i) {
             for (forvar = 0; forvar == 1; forvar--) {
                 if ((item[0] - 200 < x < item[0] + 200 && item[1] - 200 < y < item[1] + 200) || (item[0] - 160 < player.body.x < item[0] + 160 && item[1] - 160 < player.body.y < item[1] + 160)) {

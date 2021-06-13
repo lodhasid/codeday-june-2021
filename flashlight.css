@@ -15,6 +15,7 @@
     width: calc(100vh * 1.78);
     height: 100vh;
     background-color: black;
+    cursor: none;
 }
 
 
