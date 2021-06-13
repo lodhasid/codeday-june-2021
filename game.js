@@ -129,7 +129,7 @@ function create() {
         });
     }
     var i;
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 13; i++) {
         batteries.create(Math.random() * 1856 + 32, Math.random() * 1016 + 32, "batteries")
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
