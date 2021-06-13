@@ -54,12 +54,8 @@ function create() {
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
     asteroids = this.physics.add.staticGroup();
     batteries = this.physics.add.staticGroup();
-    var xpos = [];
-    var ypos = [];
+    var pos = []
     var i;
-    for (i = 0; i < 8; i++) {
-        batteries.create(Math.floor(Math.random() * 1818) + 52, Math.floor(Math.random() * 978) + 52, 'batteries');
-    }
     objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
     objective.setCollideWorldBounds(true);
     objective.setBounce(1)
@@ -122,7 +118,7 @@ function create() {
       rock.body.setCircle(50*scale);
       rocks.forEach(function(item, i)  {
         for (forvar = 0; forvar==1; forvar--) {
-          if (item[0]-200<x<item[0]+200 && item[1]-200<y<item[1]+200) {
+          if ((item[0]-200<x<item[0]+200 && item[1]-200<y<item[1]+200) || (item[0]-160<player.body.x<item[0]+160 && item[1]-160<player.body.y<item[1]+160)) {
             asteroids.remove(rock, true);
             x = Math.floor(Math.random() * 1818) + 52;
             y = Math.floor(Math.random() * 978) + 52;
@@ -135,9 +131,33 @@ function create() {
         }
         rocks.push([x, y]);
       });
-
-
-
+    }
+    var i;
+    for (i = 0; i < 8; i++) {
+      var ogbatx = Math.floor(Math.random() * 1818) + 52;
+      var ogbaty = Math.floor(Math.random() * 978) + 52;
+      ogbat = batteries.create(ogx, ogy, 'battery').setScale(1.3).refreshBody();
+      pos.push([ogbatx, ogbaty]);
+      for (z = 0; z < 9; z++) {
+        x = Math.floor(Math.random() * 1818) + 52;
+        y = Math.floor(Math.random() * 978) + 52;
+        bat = batteries.create(x, y, 'battery').setScale(scale).refreshBody();
+        pos.forEach(function(item, i)  {
+          rocks.forEach((item1, i) => {
+            for (forvar = 0; forvar==1; forvar--) {
+              if ((item[0]-64<x<item[0]+64 && item[1]-64<y<item[1]+64) || (item[0]-64<player.body.x<item[0]+ 64 && item[1]-64<player.body.y<item[1]+64) || (item[0]-64<item1[0]<item[0]+64 && item[1]-64<item1[1]<item1[1]+64)) {
+                batteries.remove(bat, true);
+                x = Math.floor(Math.random() * 1818) + 52;
+                y = Math.floor(Math.random() * 978) + 52;
+                bat = batteries.create(x, y, 'battery').setScale(scale).refreshBody();
+              } else {
+                forvar = 1
+              }
+            }
+            pos.push([x, y]);
+          });
+        });
+      }
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
     this.physics.add.collider(asteroids, batteries)
