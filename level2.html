@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="flashlight.css" id="flashlightStyles">
+    <title>NoWayHome</title>
+</head>
+
+<body style="margin: 0px; padding: 0px; ">
+    <script src="phaser.min.js"></script>
+    <script src="game.js"></script>
+    <div id="flashlightHolder">
+        <p id="energy" style="position: absolute; color:white; text-align: center; z-index:1000;font-family: calibri;font-size: 15px;width: 100%"></p>
+        <div id="flashlightHolderInside">
+            <div class="flashlight"></div>
+            <div class="astrolight"></div>
+        </div>
+    </div>
+    <!--*I know this down't work, its a placeholder for future correction-->
+    <audio autoplay loop>
+      <source src="dark.mp3" type="audio/mp3">
+    </audio>
+</body>
+
+</html>
