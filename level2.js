@@ -168,6 +168,10 @@ function objective_dude(player, objective) {
     nxtlvl.href = "/level3.html"
     nxtlvl.innerHTML = "Next Level 🚀"
     document.getElementById("flashlightHolder").append(nxtlvl)
+    var homescreen = document.createElement("a")
+    homescreen.href = "/title.html"
+    homescreen.innerHTML = "Back To Title"
+    document.getElementById("flashlightHolder").append(homescreen)
     this.scene.pause()
 }
 
@@ -176,6 +180,10 @@ function touching_rocks(player, asteroids) {
     this.add.image(1920 / 2, 1080 / 2, "deathscreen");
     document.getElementById("flashlightStyles").disabled = true
     var playagain = document.createElement("a")
+    var homescreen = document.createElement("a")
+    homescreen.href = "/title.html"
+    homescreen.innerHTML = "Back To Title"
+    document.getElementById("flashlightHolder").append(homescreen)
     playagain.href = "/level2.html"
     playagain.innerHTML = "Play Again 🌌"
     document.getElementById("flashlightHolder").append(playagain)

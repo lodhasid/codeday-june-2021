@@ -164,6 +164,10 @@ function objective_dude(player, objective) {
     captured_objective = true
     objective.disableBody(true, true)
     this.add.image(1920 / 2, 1080 / 2, "winscreen");
+    var homescreen = document.createElement("a")
+    homescreen.href = "/title.html"
+    homescreen.innerHTML = "Back To Title"
+    document.getElementById("flashlightHolder").append(homescreen)
     this.scene.pause()
 }
 
@@ -175,6 +179,10 @@ function touching_rocks(player, asteroids) {
     playagain.href = "/level3.html"
     playagain.innerHTML = "Play Again 🌌"
     document.getElementById("flashlightHolder").append(playagain)
+    var homescreen = document.createElement("a")
+    homescreen.href = "/title.html"
+    homescreen.innerHTML = "Back To Title"
+    document.getElementById("flashlightHolder").append(homescreen)
     this.scene.pause()
 }
 
