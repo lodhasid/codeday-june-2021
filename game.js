@@ -65,9 +65,6 @@ function create() {
     // game.physics.p2.enable(this.player, false);
     // this.player.body.clearShapes()
     // this.player.body.loadPolygon('leftastrobounds', 'leftastroshape')
-    this.physics.add.collider(player, asteroids, function () {
-      // DEATH FUNC HERE
-    });
     player.setScale(0.3);
     player.setCollideWorldBounds(true);
     this.anims.create({
@@ -76,7 +73,6 @@ function create() {
             start: 0,
             end: 0
         }),
-
     });
     this.anims.create({
         key: 'leftmoving',
@@ -187,6 +183,7 @@ function objective_dude(player, objective) {
 function touching_rocks(player, asteroids) {
   death = true;
   this.add.image(1920 / 2, 1080 / 2, "deathscreen");
+  document.getElementById("flashlightStyles").disabled=true
 
 }
 function flashlight_update(e) {
@@ -202,9 +199,16 @@ function flashlight_update(e) {
     document.documentElement.style.setProperty('--cursorY', y + 'px')
 }
 
+function astrolight_update() {
+    var x = player.body.x / 1920
+    var y = player.body.y / 1080
+    document.documentElement.style.setProperty('--astroX', x)
+    document.documentElement.style.setProperty('--astroY', y)
+}
+
 document.addEventListener('mousemove', flashlight_update)
 document.addEventListener('touchmove', flashlight_update)
-
+setInterval(astrolight_update, 50)
 
 function update() {
     if (window.cursors.left.isDown) {
