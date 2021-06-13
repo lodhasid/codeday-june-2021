@@ -161,6 +161,10 @@ function touching_rocks(player, asteroids) {
     death = true;
     this.add.image(1920 / 2, 1080 / 2, "deathscreen");
     document.getElementById("flashlightStyles").disabled = true
+    var playagain = document.createElement("a")
+    playagain.href = "/index.html"
+    playagain.innerHTML = "Play Again 🌌"
+    document.body.append(playagain)
     this.scene.pause()
 
 }
@@ -173,7 +177,6 @@ function flashlight_update(e) {
     }
     var x = e.clientX
     var y = e.clientY
-
     document.documentElement.style.setProperty('--cursorX', x + 'px')
     document.documentElement.style.setProperty('--cursorY', y + 'px')
 }
