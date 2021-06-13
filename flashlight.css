@@ -32,8 +32,8 @@
 .astrolight {
     border-radius: 50%;
     filter: blur(1px);
-    width: 120px;
-    height: 120px;
+    width: 25vh;
+    height: 25vh;
     position: absolute;
     top: calc(calc(var(--astroY) * 100vh) - 15px);
     left: calc(calc(var(--astroX) * calc(100vh * 1.78)) - 25px);
