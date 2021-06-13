@@ -129,7 +129,7 @@ function create() {
         });
     }
     var i;
-    for (i = 0; i < 13; i++) {
+    for (i = 0; i < 9; i++) {
         batteries.create(Math.random() * 1856 + 32, Math.random() * 1016 + 32, "batteries")
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
@@ -148,13 +148,19 @@ function sleep() {
 }
 
 function energy(player, battery) {
-    energy_remaining += 5
+    energy_remaining += 3
     battery.disableBody(true, true)
 }
 
 function objective_dude(player, objective) {
     captured_objective = true
     objective.disableBody(true, true)
+    document.getElementById("flashlightStyles").disabled = true
+    var nxtlvl = document.createElement("a")
+    nxtlvl.href = "/level2.html"
+    nxtlvl.innerHTML = "Next Level 🚀"
+    document.getElementById("flashlightHolder").append(nxtlvl)
+    this.scene.pause()
 }
 
 function touching_rocks(player, asteroids) {
@@ -164,7 +170,7 @@ function touching_rocks(player, asteroids) {
     var playagain = document.createElement("a")
     playagain.href = "/index.html"
     playagain.innerHTML = "Play Again 🌌"
-    document.body.append(playagain)
+    document.getElementById("flashlightHolder").append(playagain)
     this.scene.pause()
 
 }

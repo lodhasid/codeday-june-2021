@@ -29,19 +29,6 @@
     background-color: gray;
 }
 
-a {
-    position: absolute;
-    top: 70vh;
-    width: 20vw;
-    left: 40vw;
-    border-radius: 8px;
-    border: none;
-    background: white;
-    box-shadow: 2px 2px 2px white;
-    padding: 8px;
-    font-family: Calibri;
-    z-index: 998;
-}
 
 .astrolight {
     border-radius: 50%;
