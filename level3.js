@@ -119,7 +119,7 @@ function create() {
         rock.body.setVelocity(Math.random()*250, [Math.random()*250]);
         rock.setBounce(1)
         rock.setCollideWorldBounds(true)
-        rock.body.setCircle(50 * scale);
+        rock.body.setCircle(40 * scale);
         rocks.forEach(function (item, i) {
             for (forvar = 0; forvar == 1; forvar--) {
                 if ((item[0] - 200 < x < item[0] + 200 && item[1] - 200 < y < item[1] + 200) || (item[0] - 160 < player.body.x < item[0] + 160 && item[1] - 160 < player.body.y < item[1] + 160)) {
@@ -128,7 +128,7 @@ function create() {
                     y = Math.floor(Math.random() * 978) + 52;
                     console.log(x)
                     rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
-                    rock.body.setCircle(50 * scale);
+                    rock.body.setCircle(40 * scale);
                 } else {
                     forvar = 1
                 }
