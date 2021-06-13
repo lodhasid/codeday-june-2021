@@ -106,7 +106,7 @@ function create() {
     spacething = asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
     rocks.push([ogx, ogy]);
     spacething.body.setCircle(50 * 1.3);
-    for (z = 0; z < 9; z++) {
+    for (z = 0; z < 6; z++) {
         x = Math.floor(Math.random() * 1818) + 52;
         y = Math.floor(Math.random() * 978) + 52;
         scale = 1 + Math.random() / 2;
@@ -130,30 +130,7 @@ function create() {
     }
     var i;
     for (i = 0; i < 8; i++) {
-        var ogbatx = Math.floor(Math.random() * 1818) + 52;
-        var ogbaty = Math.floor(Math.random() * 978) + 52;
-        ogbat = batteries.create(ogx, ogy, 'battery').setScale(1.3).refreshBody();
-        pos.push([ogbatx, ogbaty]);
-        for (z = 0; z < 9; z++) {
-            x = Math.floor(Math.random() * 1818) + 52;
-            y = Math.floor(Math.random() * 978) + 52;
-            bat = batteries.create(x, y, 'battery').setScale(scale).refreshBody();
-            pos.forEach(function (item, i) {
-                rocks.forEach((item1, i) => {
-                    for (forvar = 0; forvar == 1; forvar--) {
-                        if ((item[0] - 64 < x < item[0] + 64 && item[1] - 64 < y < item[1] + 64) || (item[0] - 64 < player.body.x < item[0] + 64 && item[1] - 64 < player.body.y < item[1] + 64) || (item[0] - 64 < item1[0] < item[0] + 64 && item[1] - 64 < item1[1] < item1[1] + 64)) {
-                            batteries.remove(bat, true);
-                            x = Math.floor(Math.random() * 1818) + 52;
-                            y = Math.floor(Math.random() * 978) + 52;
-                            bat = batteries.create(x, y, 'battery').setScale(scale).refreshBody();
-                        } else {
-                            forvar = 1
-                        }
-                    }
-                    pos.push([x, y]);
-                });
-            });
-        }
+        batteries.create(Math.random() * 1856 + 32, Math.random() * 1016 + 32, "batteries")
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
     this.physics.add.collider(asteroids, batteries)
@@ -171,7 +148,7 @@ function sleep() {
 }
 
 function energy(player, battery) {
-    energy_remaining += 3
+    energy_remaining += 5
     battery.disableBody(true, true)
 }
 
@@ -184,6 +161,7 @@ function touching_rocks(player, asteroids) {
     death = true;
     this.add.image(1920 / 2, 1080 / 2, "deathscreen");
     document.getElementById("flashlightStyles").disabled = true
+    this.scene.pause()
 
 }
 
@@ -236,10 +214,10 @@ function update() {
         player.setVelocityY(150);
     } else {
         if (player.body.velocity.y > 0) {
-            player.setVelocityY(player.body.velocity.y - 3);
+            player.setVelocityY(player.body.velocity.y - 5);
         }
         if (player.body.velocity.y < 0) {
-            player.setVelocityY(player.body.velocity.y + 3);
+            player.setVelocityY(player.body.velocity.y + 5);
         }
     }
     document.getElementById("energy").innerHTML = "You have " + energy_remaining + " seconds of energy remaining";

@@ -35,7 +35,7 @@
     width: 120px;
     height: 120px;
     position: absolute;
-    top: calc(var(--astroY) * 100vh);
-    left: calc(var(--astroX) * calc(100vh * 1.78));
+    top: calc(calc(var(--astroY) * 100vh) - 15px);
+    left: calc(calc(var(--astroX) * calc(100vh * 1.78)) - 25px);
     background-color: gray;
 }
