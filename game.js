@@ -129,7 +129,7 @@ function create() {
         });
     }
     var i;
-    for (i = 0; i < 13; i++) {
+    for (i = 0; i < 9; i++) {
         batteries.create(Math.random() * 1856 + 32, Math.random() * 1016 + 32, "batteries")
     }
     this.physics.add.overlap(player, asteroids, touching_rocks, null, this);
@@ -148,7 +148,7 @@ function sleep() {
 }
 
 function energy(player, battery) {
-    energy_remaining += 5
+    energy_remaining += 3
     battery.disableBody(true, true)
 }
 
@@ -157,6 +157,13 @@ function objective_dude(player, objective) {
     this.add.image(1920/2, 1080/2, "winscreen")
     objective.disableBody(true, true)
     document.getElementById("flashlightStyles").disabled = true
+<<<<<<< HEAD
+=======
+    var nxtlvl = document.createElement("a")
+    nxtlvl.href = "/level2.html"
+    nxtlvl.innerHTML = "Next Level 🚀"
+    document.getElementById("flashlightHolder").append(nxtlvl)
+>>>>>>> 42fba1732480ab664d941805dec6a043b63a14ee
     this.scene.pause()
 }
 
@@ -164,6 +171,10 @@ function touching_rocks(player, asteroids) {
     death = true;
     this.add.image(1920 / 2, 1080 / 2, "deathscreen");
     document.getElementById("flashlightStyles").disabled = true
+    var playagain = document.createElement("a")
+    playagain.href = "/index.html"
+    playagain.innerHTML = "Play Again 🌌"
+    document.getElementById("flashlightHolder").append(playagain)
     this.scene.pause()
 
 }
@@ -176,7 +187,6 @@ function flashlight_update(e) {
     }
     var x = e.clientX
     var y = e.clientY
-
     document.documentElement.style.setProperty('--cursorX', x + 'px')
     document.documentElement.style.setProperty('--cursorY', y + 'px')
 }
