@@ -154,7 +154,10 @@ function energy(player, battery) {
 
 function objective_dude(player, objective) {
     captured_objective = true
+    this.add.image(1920/2, 1080/2, "winscreen")
     objective.disableBody(true, true)
+    document.getElementById("flashlightStyles").disabled = true
+    this.scene.pause()
 }
 
 function touching_rocks(player, asteroids) {
