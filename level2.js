@@ -52,7 +52,9 @@ function preload() {
 function create() {
     // game.physics.startSystem(Phaser.Physics.P2JS);
     this.add.image(1920 / 2, 1080 / 2, "background"); //load background centered
-    asteroids = this.physics.add.staticGroup();
+    asteroids = this.physics.add.group({
+      key: 'asteroids'
+    });
     batteries = this.physics.add.staticGroup();
     var pos = []
     var i;
@@ -111,6 +113,7 @@ function create() {
         y = Math.floor(Math.random() * 978) + 52;
         scale = 1 + Math.random() / 2;
         rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
+        rock.body.setVelocity(Math.random()*20, [Math.random()*20]);
         rock.body.setCircle(50 * scale);
         rocks.forEach(function (item, i) {
             for (forvar = 0; forvar == 1; forvar--) {
