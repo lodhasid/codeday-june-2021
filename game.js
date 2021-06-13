@@ -101,13 +101,13 @@ function create() {
     var y;
     var scale;
     var size;
-    var ogx = Math.floor(Math.random() * 1818) + 52;
+    var ogx = Math.floor(Math.random() * 1600) + 52;
     var ogy = Math.floor(Math.random() * 978) + 52;
     spacething = asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
     rocks.push([ogx, ogy]);
     spacething.body.setCircle(50 * 1.3);
     for (z = 0; z < 6; z++) {
-        x = Math.floor(Math.random() * 1818) + 52;
+        x = Math.floor(Math.random() * 1600) + 52;
         y = Math.floor(Math.random() * 978) + 52;
         scale = 1 + Math.random() / 2;
         rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
@@ -116,7 +116,7 @@ function create() {
             for (forvar = 0; forvar == 1; forvar--) {
                 if ((item[0] - 200 < x < item[0] + 200 && item[1] - 200 < y < item[1] + 200) || (item[0] - 160 < player.body.x < item[0] + 160 && item[1] - 160 < player.body.y < item[1] + 160)) {
                     asteroids.remove(rock, true);
-                    x = Math.floor(Math.random() * 1818) + 52;
+                    x = Math.floor(Math.random() * 1600) + 52;
                     y = Math.floor(Math.random() * 978) + 52;
                     console.log(x)
                     rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
@@ -157,13 +157,10 @@ function objective_dude(player, objective) {
     this.add.image(1920/2, 1080/2, "winscreen")
     objective.disableBody(true, true)
     document.getElementById("flashlightStyles").disabled = true
-<<<<<<< HEAD
-=======
     var nxtlvl = document.createElement("a")
     nxtlvl.href = "/level2.html"
     nxtlvl.innerHTML = "Next Level 🚀"
     document.getElementById("flashlightHolder").append(nxtlvl)
->>>>>>> 42fba1732480ab664d941805dec6a043b63a14ee
     this.scene.pause()
 }
 
@@ -218,8 +215,6 @@ function update() {
             player.setVelocityX(player.body.velocity.x + 3);
             player.anims.play('left', true)
         }
-
-
     }
     if (window.cursors.up.isDown) {
         player.setVelocityY(-150);
