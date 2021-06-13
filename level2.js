@@ -40,7 +40,7 @@ function preload() {
         frameWidth: 512,
         frameHeight: 512
     })
-    this.load.image("objective", "earth.png")
+    this.load.image("objective", "objective.png")
     this.load.image("asteroid1", "/asteroids/Stones_15.png")
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
@@ -60,6 +60,7 @@ function create() {
     var i;
     objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
     objective.setCollideWorldBounds(true);
+    objective.setScale(0.2);
     objective.setBounce(1)
     objective.setVelocityX(-60)
     objective.setVelocityY(-60)
@@ -158,6 +159,9 @@ function energy(player, battery) {
 function objective_dude(player, objective) {
     captured_objective = true
     objective.disableBody(true, true)
+    this.add.image(1920/2, 1080/2, "winscreen")
+    objective.disableBody(true, true)
+    document.getElementById("flashlightStyles").disabled = true
 }
 
 function touching_rocks(player, asteroids) {
