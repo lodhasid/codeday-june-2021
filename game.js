@@ -173,7 +173,6 @@ function touching_rocks(player, asteroids) {
     playagain.innerHTML = "Play Again 🌌"
     document.getElementById("flashlightHolder").append(playagain)
     this.scene.pause()
-
 }
 
 function flashlight_update(e) {

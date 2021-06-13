@@ -61,8 +61,8 @@ function create() {
     objective = this.physics.add.sprite(Math.random() * 500, Math.random() * 1080, 'objective');
     objective.setCollideWorldBounds(true);
     objective.setBounce(1)
-    objective.setVelocityX(-100)
-    objective.setVelocityY(-100)
+    objective.setVelocityX(-60)
+    objective.setVelocityY(-60)
     player = this.physics.add.sprite(1800, 1080 / 2, "spaceman");
     // game.physics.p2.enable(this.player, false);
     // this.player.body.clearShapes()
@@ -106,19 +106,19 @@ function create() {
     var ogx = Math.floor(Math.random() * 1600) + 52;
     var ogy = Math.floor(Math.random() * 978) + 52;
     spacething = asteroids.create(ogx, ogy, 'asteroid3').setScale(1.3).refreshBody();
-    spacething.setBounce(1)
+    spacething.body.setVelocity(Math.random()*250, [Math.random()*250]);
+    spacething.setBounce(1);
     spacething.setCollideWorldBounds(true);
     spacething.body.setCircle(50 * 1.3);
-    spacething.body.setVelocity(Math.random()*100, [Math.random()*100]);
     rocks.push([ogx, ogy]);
     for (z = 0; z < 6; z++) {
         x = Math.floor(Math.random() * 1600) + 52;
         y = Math.floor(Math.random() * 978) + 52;
         scale = 1 + Math.random() / 2;
         rock = asteroids.create(x, y, 'asteroid3').setScale(scale).refreshBody();
-        rock.body.setVelocity(Math.random()*100, [Math.random()*100]);
+        rock.body.setVelocity(Math.random()*250, [Math.random()*250]);
         rock.setBounce(1)
-        rock.setCollideWorldBounds(true);
+        rock.setCollideWorldBounds(true)
         rock.body.setCircle(50 * scale);
         rocks.forEach(function (item, i) {
             for (forvar = 0; forvar == 1; forvar--) {
@@ -163,20 +163,16 @@ function energy(player, battery) {
 function objective_dude(player, objective) {
     captured_objective = true
     objective.disableBody(true, true)
-    document.getElementById("flashlightStyles").disabled = true
-    var nxtlvl = document.createElement("a")
-    nxtlvl.href = "/level3.html"
-    nxtlvl.innerHTML = "Next Level 🚀"
-    document.getElementById("flashlightHolder").append(nxtlvl)
+    this.add.image(1920 / 2, 1080 / 2, "winscreen");
     this.scene.pause()
 }
 
 function touching_rocks(player, asteroids) {
     death = true;
     this.add.image(1920 / 2, 1080 / 2, "deathscreen");
-    document.getElementById("flashlightStyles").disabled = true
+    document.getElementById("flashlightStyles").disabled = true;
     var playagain = document.createElement("a")
-    playagain.href = "/level2.html"
+    playagain.href = "/level3.html"
     playagain.innerHTML = "Play Again 🌌"
     document.getElementById("flashlightHolder").append(playagain)
     this.scene.pause()
