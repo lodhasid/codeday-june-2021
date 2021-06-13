@@ -40,7 +40,7 @@ function preload() {
         frameWidth: 512,
         frameHeight: 512
     })
-    this.load.image("objective", "objective.png")
+    this.load.image("objective", "earth.png")
     this.load.image("asteroid1", "/asteroids/Stones_15.png")
     this.load.image("asteroid2", "/asteroids/Stones2Filled_02.png")
     this.load.image("asteroid3", "/asteroids/Stones2Filled_17.png")
